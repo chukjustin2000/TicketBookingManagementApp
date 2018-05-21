@@ -17,4 +17,24 @@ public class TicketBookingService {
 		return ticketBookingDao.save(ticket);
 	}
 
+	public Ticket getTicketById(Integer ticketId) {
+		
+		return ticketBookingDao.findOne(ticketId);
+	}
+
+	public Iterable<Ticket> getAllBookedTickets() {
+		return ticketBookingDao.findAll();
+	}
+
+	public void deleteTicket(Integer ticketId) {
+		 ticketBookingDao.delete(ticketId);
+		
+	}
+
+	public Ticket updateTicket(int ticketId, String email) {
+		Ticket ticket = ticketBookingDao.findOne(ticketId);
+		ticket.setEmail(email);
+		return ticketBookingDao.save(ticket);
+	}
+
 }
